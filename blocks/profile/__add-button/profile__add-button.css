@@ -1,0 +1,11 @@
+.profile__add-button {
+  margin: 0 auto 0;
+}
+
+@media(min-width: 1280px) {
+  .profile__add-button {
+    grid-column: 3;
+    grid-row: 1;
+    visibility: hidden;
+  }
+}
