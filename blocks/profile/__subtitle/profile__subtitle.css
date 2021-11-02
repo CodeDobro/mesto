@@ -9,11 +9,6 @@
   .profile__subtitle {
     font-size: 18px;
     line-height: 21.78px;
-  }
-}
-
-@media(min-width: 1280px) {
-  .profile__subtitle {
     grid-column: 2;
     grid-row: 2;
     margin: 0 0 0 30px;

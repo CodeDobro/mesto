@@ -9,7 +9,7 @@
 
 @media(min-width: 768px) {
   .profile__title {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 
@@ -17,11 +17,6 @@
   .profile__title {
     font-size: 42px;
     line-height: 48px;
-  }
-}
-
-@media(min-width: 1280px) {
-  .profile__title {
     grid-column: 2;
     grid-row: 1;
     margin: 0;
