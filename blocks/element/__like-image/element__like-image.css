@@ -9,3 +9,7 @@
 .element__like-image:hover {
   opacity: 50%;
 }
+
+.element__like-image:active {
+  background-image: url(../../../images/like-black.svg);
+}
