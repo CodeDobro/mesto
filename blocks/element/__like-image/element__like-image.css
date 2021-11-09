@@ -4,6 +4,7 @@
   height: 19px;
   margin: auto 20px auto 0;
   transition: opacity 0.1s linear;
+  cursor: pointer;
 }
 
 .element__like-image:hover {

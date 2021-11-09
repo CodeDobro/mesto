@@ -2,7 +2,11 @@
   font-size: 14px;
   line-height: 16.94px;
   color: #fff;
-  margin: 0 auto 36px;
+  margin: 0 auto 35px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 170px;
 }
 
 @media(min-width: 1024px) {
@@ -13,5 +17,6 @@
     grid-row: 2;
     margin: 0 0 0 30px;
     padding-bottom: 10px;
+    max-width: 230px;
   }
 }
