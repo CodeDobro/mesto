@@ -1,0 +1,14 @@
+.popup__input {
+  font-size: 14px;
+  line-height: 16.94px;
+  border-style: none;
+  margin-bottom: 14px;
+  padding-bottom: 9px;
+  padding-top: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.popup__input:last-of-type {
+  margin-bottom: 2px;
+}

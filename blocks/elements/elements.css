@@ -21,3 +21,8 @@
     grid-template-columns: repeat(3, auto);
   }
 }
+
+.elements {
+  margin: 10px 0 0 0;
+  padding: 0;
+}
