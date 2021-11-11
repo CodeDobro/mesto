@@ -6,6 +6,11 @@
   border: none;
   margin: 0 auto 0;
   cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.profile__add-button:hover {
+  opacity: 60%;
 }
 
 @media(min-width: 1024px) {

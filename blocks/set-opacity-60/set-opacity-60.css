@@ -1,7 +1,0 @@
-.set-opacity-60 {
-  transition: opacity 0.2s linear;
-}
-
-.set-opacity-60:hover {
-  opacity: 60%;
-}

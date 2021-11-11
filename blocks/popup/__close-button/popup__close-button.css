@@ -8,6 +8,11 @@
   height: 20px;
   width: 20px;
   background-image: url(../../../images/Close-Icon.svg);
+  transition: opacity 0.2s linear;
+}
+
+.popup__close-button:hover {
+  opacity: 60%;
 }
 
 @media(min-width: 768px) {
