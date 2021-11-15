@@ -9,7 +9,8 @@
   transition: opacity 0.2s linear;
 }
 
-.profile__add-button::before {
+.profile__add-button::before,
+.profile__add-button:after {
   position: absolute;
   content: '';
   height: 16px;
@@ -18,12 +19,7 @@
 }
 
 .profile__add-button:after {
-  position: absolute;
-  content: '';
-  height: 16px;
-  border: 1px solid #fff;
   transform: rotate(90deg);
-  top: 13px;
 }
 
 .profile__add-button:hover {
@@ -38,12 +34,9 @@
     margin: 35px 0 0 40px;
   }
 
-  .profile__add-button::before {
-    height: 22px;
-    top: 12px;
-  }
-
+  .profile__add-button::before,
   .profile__add-button:after {
     height: 22px;
+    top: 12px;
   }
 }
