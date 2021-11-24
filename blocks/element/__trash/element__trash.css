@@ -1,0 +1,15 @@
+.element__trash {
+  /* position: relative;
+  top: 100px;
+  right: 10px;
+  left: 100px;
+  bottom: 10px; */
+  background-image: url(../../../images/trash.svg);
+  border: none;
+  background-color: black;
+  width: 18px;
+  height: 19px;
+  margin: auto 20px auto 0;
+  transition: opacity 0.1s linear;
+  cursor: pointer;
+}

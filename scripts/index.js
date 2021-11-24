@@ -7,38 +7,8 @@ const inputAbout = popupElement.querySelector('[name=form-about]');
 const title = document.querySelector('.profile__title');
 const subtitle = document.querySelector('.profile__subtitle');
 const saveButton = popupElement.querySelector('.popup__save-button');
-
+const template = document.querySelector('.element__template')
 const addButton = document.querySelector('.profile__add-button');
-
-function openPopup() {
-  inputName.value = title.textContent;
-  inputAbout.value = subtitle.textContent;
-  popupElement.classList.add('popup_open');
-}
-
-function closePopup() {
-  popupElement.classList.remove('popup_open');
-}
-
-editButton.addEventListener('click', openPopup)
-closeButton.addEventListener('click', closePopup)
-
-addButton.addEventListener('click', openPopup)
-
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-
-    title.textContent = inputName.value;;
-    subtitle.textContent = inputAbout.value;
-    closePopup();
-}
-
-popupForm.addEventListener('submit', formSubmitHandler);
-
-
-// document.createElement
-// template строки
-// tempalte тэг
 
 const initialCards = [
   {
@@ -67,31 +37,42 @@ const initialCards = [
   }
 ];
 
-const list = document.querySelector('.elements__list');
+function openPopup() {
+  inputName.value = title.textContent;
+  inputAbout.value = subtitle.textContent;
+  popupElement.classList.add('popup_open');
+}
+
+function closePopup() {
+  popupElement.classList.remove('popup_open');
+}
+
+editButton.addEventListener('click', openPopup)
+closeButton.addEventListener('click', closePopup)
+addButton.addEventListener('click', openPopup)
+
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+
+    title.textContent = inputName.value;;
+    subtitle.textContent = inputAbout.value;
+    closePopup();
+}
+
+popupForm.addEventListener('submit', formSubmitHandler);
+
+const createElementDomNode = (item) => {
+  const elementTemplate = template.content.querySelector('.element').cloneNode(true);
+  elementTemplate.querySelector('.element__title').textContent = item.name;
+  elementTemplate.querySelector('.element__image').src = item.link;
+  elementTemplate.querySelector('.element__image').alt = item.name;
+  return elementTemplate;
+}
 
 const result = initialCards.map((item) => {
-  const li = document.createElement('li');
-  li.classList.add('element');
-
-  const img = document.createElement('img');
-  img.classList.add('element__image');
-  img.src = item.link;
-
-  const div = document.createElement('div');
-  div.classList.add('element__bottom-block');
-
-  const h2 = document.createElement('h2');
-  h2.classList.add('element__title');
-
-  h2.textContent = item.name;
-
-  li.append(img, div);
-
-  div.append(h2);
-
-  return li;
+  return createElementDomNode(item);
 });
 
-list.append(...result);
+const list = document.querySelector('.elements__list');
 
-console.log(result);
+list.append(...result);
