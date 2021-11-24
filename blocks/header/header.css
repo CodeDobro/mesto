@@ -4,5 +4,6 @@
   justify-content: start;
   width: 100%;
   max-width: 880px;
+  border-bottom: solid 1px #545454;
   font-family: Inter, Arial, sans-serif;
 }

@@ -8,6 +8,12 @@
   border: none;
   border-radius: 2px;
   margin: 45px 0 25px 0;
+  transition: opacity 0.2s linear;
+  cursor: pointer;
+}
+
+.popup__save-button:hover {
+  opacity: 80%;
 }
 
 @media(min-width: 1024px) {

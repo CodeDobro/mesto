@@ -3,13 +3,18 @@
   line-height: 32.68px;
   font-weight: 500;
   color: #fff;
-  margin: 0 10px 0 24px;
+  margin: 0 10px 0 28px;
   padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 230px;
 }
 
 @media(min-width: 768px) {
   .profile__title {
     font-size: 32px;
+    max-width: 250px;
   }
 }
 
@@ -20,5 +25,6 @@
     grid-column: 2;
     grid-row: 1;
     margin: 0;
+    max-width: 330px;
   }
 }
