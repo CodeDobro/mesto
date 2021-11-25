@@ -1,14 +1,17 @@
-const popupElement = document.querySelector('.popup');
-const popupForm = popupElement.querySelector('.popup__form');
+const popupProfile = document.querySelector('.popup__profile');
+const popupAdd = document.querySelector('.popup__add');
+const popupFormProfile = popupProfile.querySelector('.popup__form-profile');
 const editButton = document.querySelector('.profile__edit-button');
-const closeButton = popupElement.querySelector('.popup__close-button');
-const inputName = popupElement.querySelector('[name=form-name]');
-const inputAbout = popupElement.querySelector('[name=form-about]');
+const closeButtonProfile = popupProfile.querySelector('.popup__close-button');
+const closeButtonAdd = popupAdd.querySelector('.popup__close-button');
+const inputName = popupProfile.querySelector('[name=form-name]');
+const inputAbout = popupProfile.querySelector('[name=form-about]');
 const title = document.querySelector('.profile__title');
 const subtitle = document.querySelector('.profile__subtitle');
-const saveButton = popupElement.querySelector('.popup__save-button');
+const saveButton = popupProfile.querySelector('.popup__save-button');
 const template = document.querySelector('.element__template')
 const addButton = document.querySelector('.profile__add-button');
+
 
 const initialCards = [
   {
@@ -40,16 +43,27 @@ const initialCards = [
 function openPopup() {
   inputName.value = title.textContent;
   inputAbout.value = subtitle.textContent;
-  popupElement.classList.add('popup_open');
+  popupProfile.classList.add('popup_open');
 }
 
 function closePopup() {
-  popupElement.classList.remove('popup_open');
+  popupProfile.classList.remove('popup_open');
+}
+
+function openPopupAdd() {
+  // inputName.value = title.textContent;
+  // inputAbout.value = subtitle.textContent;
+  popupAdd.classList.add('popup_open');
+}
+
+function closePopupAdd() {
+  popupAdd.classList.remove('popup_open');
 }
 
 editButton.addEventListener('click', openPopup)
-closeButton.addEventListener('click', closePopup)
-addButton.addEventListener('click', openPopup)
+closeButtonProfile.addEventListener('click', closePopup)
+addButton.addEventListener('click', openPopupAdd)
+closeButtonAdd.addEventListener('click', closePopupAdd)
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
@@ -59,13 +73,19 @@ function formSubmitHandler (evt) {
     closePopup();
 }
 
-popupForm.addEventListener('submit', formSubmitHandler);
+popupFormProfile.addEventListener('submit', formSubmitHandler);
 
 const createElementDomNode = (item) => {
   const elementTemplate = template.content.querySelector('.element').cloneNode(true);
   elementTemplate.querySelector('.element__title').textContent = item.name;
   elementTemplate.querySelector('.element__image').src = item.link;
   elementTemplate.querySelector('.element__image').alt = item.name;
+
+  const trashButton = elementTemplate.querySelector('.element__trash');
+  trashButton.addEventListener('click', () => {
+    elementTemplate.remove();
+  });
+
   return elementTemplate;
 }
 
