@@ -1,0 +1,8 @@
+.element__image-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 282px;
+  min-height: 282px;
+  margin: 0;
+}
