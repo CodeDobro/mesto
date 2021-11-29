@@ -1,9 +1,9 @@
-const popupProfile = document.querySelector('.popup__profile');
+const popupProfile = document.querySelector('.popup_type_profile');
 const popupFormProfile = popupProfile.querySelector('.popup__form-profile');
-const popupOpenImage = document.querySelector('.popup__open-image');
+const popupOpenImage = document.querySelector('.popup_type_image');
 const popupImage = popupOpenImage.querySelector('.popup__image');
 const popupImageTitle = popupOpenImage.querySelector('.popup__image-title');
-const popupAdd = document.querySelector('.popup__add');
+const popupAdd = document.querySelector('.popup_type_add');
 const popupFormAdd = popupAdd.querySelector('.popup__form-add');
 const editButton = document.querySelector('.profile__edit-button');
 const closeButtonProfile = popupProfile.querySelector('.popup__close-button');
@@ -112,7 +112,6 @@ const createElementDomNode = (item) => {
     popupImage.src = item.link;
     popupImageTitle.textContent = item.name;
     openPopupImage();
-    // alert('qwe');
   });
 
   elementTemplate.querySelector('.element__like').addEventListener('click', function (evt) {
