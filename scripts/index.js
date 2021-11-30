@@ -19,7 +19,6 @@ const saveButton = popupProfile.querySelector('.popup__save-button');
 const template = document.querySelector('.element__template')
 const addButton = document.querySelector('.profile__add-button');
 
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -47,45 +46,43 @@ const initialCards = [
   }
 ];
 
-function openPopup() {
+function openPopup(item) {
   inputName.value = title.textContent;
   inputAbout.value = subtitle.textContent;
-  popupProfile.classList.add('popup_open');
-}
+  item.classList.add('popup_open');
+};
 
-function closePopup() {
-  popupProfile.classList.remove('popup_open');
-}
+function closePopup(item) {
+  item.classList.remove('popup_open');
+};
 
-function openPopupAdd() {
-  popupAdd.classList.add('popup_open');
-}
+editButton.addEventListener('click', () => {
+  openPopup(popupProfile);
+});
 
-function closePopupAdd() {
-  popupAdd.classList.remove('popup_open');
-}
+closeButtonProfile.addEventListener('click', () => {
+  closePopup(popupProfile);
+});
 
-function openPopupImage() {
-  popupOpenImage.classList.add('popup_open');
-}
+addButton.addEventListener('click', () => {
+  openPopup(popupAdd);
+});
 
-function closePopupImage() {
-  popupOpenImage.classList.remove('popup_open');
-}
+closeButtonAdd.addEventListener('click', () => {
+  closePopup(popupAdd);
+});
 
-editButton.addEventListener('click', openPopup)
-closeButtonProfile.addEventListener('click', closePopup)
-addButton.addEventListener('click', openPopupAdd)
-closeButtonAdd.addEventListener('click', closePopupAdd)
-closeButtonImage.addEventListener('click', closePopupImage)
+closeButtonImage.addEventListener('click', () => {
+  closePopup(popupOpenImage);
+});
 
-const formSubmitHandler = (evt) => {
+const submitFormHandler = (evt) => {
     evt.preventDefault();
 
-    title.textContent = inputName.value;;
+    title.textContent = inputName.value;
     subtitle.textContent = inputAbout.value;
-    closePopup();
-}
+    closePopup(popupProfile);
+};
 
 const submitFormAdd = (evt) => {
   evt.preventDefault();
@@ -96,10 +93,35 @@ const submitFormAdd = (evt) => {
 
   list.prepend(elementName);
 
-  closePopupAdd();
+  inputTitle.value = '';
+  inputLink.value = '';
+
+  closePopup(popupAdd);
 };
 
-popupFormProfile.addEventListener('submit', formSubmitHandler);
+const listenTrashButton = (elementTemplate) => {
+  const trashButton = elementTemplate.querySelector('.element__trash');
+  trashButton.addEventListener('click', () => {
+    elementTemplate.remove();
+  });
+};
+
+const listenLikeButton = (elementTemplate) => {
+  elementTemplate.querySelector('.element__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__like_status_active');
+  });
+};
+
+const listenImageClick = (elementTemplate, item) => {
+  elementTemplate.querySelector('.element__image').addEventListener('click', () => {
+    popupImage.src = item.link;
+    popupImage.alt = item.name;
+    popupImageTitle.textContent = item.name;
+    openPopup(popupOpenImage);
+  });
+};
+
+popupFormProfile.addEventListener('submit', submitFormHandler);
 popupFormAdd.addEventListener('submit', submitFormAdd);
 
 const createElementDomNode = (item) => {
@@ -108,21 +130,9 @@ const createElementDomNode = (item) => {
   elementTemplate.querySelector('.element__image').src = item.link;
   elementTemplate.querySelector('.element__image').alt = item.name;
 
-  elementTemplate.querySelector('.element__image').addEventListener('click', () => {
-    popupImage.src = item.link;
-    popupImageTitle.textContent = item.name;
-    openPopupImage();
-    // alert('qwe');
-  });
-
-  elementTemplate.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_status_active');
-  });
-
-  const trashButton = elementTemplate.querySelector('.element__trash');
-  trashButton.addEventListener('click', () => {
-    elementTemplate.remove();
-  });
+  listenImageClick(elementTemplate, item);
+  listenLikeButton(elementTemplate);
+  listenTrashButton(elementTemplate);
 
   return elementTemplate;
 }

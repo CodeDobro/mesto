@@ -4,12 +4,6 @@
   padding: 0;
 }
 
-/* @media(min-width: 1024px) {
-  .profile__info {
-    margin: 0 0 16px 34px;
-  }
-} */
-
 @media(min-width: 1024px) {
   .profile__info {
     margin: 23px 0 0 30px;
