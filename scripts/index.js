@@ -18,6 +18,7 @@ const subtitle = document.querySelector('.profile__subtitle');
 const saveButton = popupProfile.querySelector('.popup__save-button');
 const template = document.querySelector('.element__template')
 const addButton = document.querySelector('.profile__add-button');
+const list = document.querySelector('.elements__list');
 
 const initialCards = [
   {
@@ -47,8 +48,6 @@ const initialCards = [
 ];
 
 function openPopup(item) {
-  inputName.value = title.textContent;
-  inputAbout.value = subtitle.textContent;
   item.classList.add('popup_open');
 };
 
@@ -57,6 +56,8 @@ function closePopup(item) {
 };
 
 editButton.addEventListener('click', () => {
+  inputName.value = title.textContent;
+  inputAbout.value = subtitle.textContent;
   openPopup(popupProfile);
 });
 
@@ -77,11 +78,16 @@ closeButtonImage.addEventListener('click', () => {
 });
 
 const submitFormHandler = (evt) => {
-    evt.preventDefault();
+  evt.preventDefault();
 
-    title.textContent = inputName.value;
-    subtitle.textContent = inputAbout.value;
-    closePopup(popupProfile);
+  title.textContent = inputName.value;
+  subtitle.textContent = inputAbout.value;
+  
+  closePopup(popupProfile);
+};
+
+const renderElement = (item, meth) => {
+  list[meth](item);
 };
 
 const submitFormAdd = (evt) => {
@@ -91,7 +97,7 @@ const submitFormAdd = (evt) => {
   const inputAddLink = inputLink.value;
   const elementName = createElementDomNode({ name: inputAddTitle, link: inputAddLink });
 
-  list.prepend(elementName);
+  renderElement(elementName, "prepend");
 
   inputTitle.value = '';
   inputLink.value = '';
@@ -141,6 +147,6 @@ const result = initialCards.map((item) => {
   return createElementDomNode(item);
 });
 
-const list = document.querySelector('.elements__list');
-
-list.append(...result);
+result.forEach((item) => {
+  renderElement(item, "append");
+});
