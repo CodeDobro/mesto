@@ -47,12 +47,21 @@ const initialCards = [
   }
 ];
 
+function keyHandler(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_open');
+    closePopup(openedPopup);
+  }
+}
+
 function openPopup(item) {
   item.classList.add('popup_open');
+  document.addEventListener('keydown', keyHandler);
 };
 
 function closePopup(item) {
   item.classList.remove('popup_open');
+  document.removeEventListener('keydown', keyHandler);
 };
 
 editButton.addEventListener('click', () => {
@@ -82,7 +91,7 @@ const submitFormHandler = (evt) => {
 
   title.textContent = inputName.value;
   subtitle.textContent = inputAbout.value;
-  
+
   closePopup(popupProfile);
 };
 
