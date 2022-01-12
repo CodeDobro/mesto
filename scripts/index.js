@@ -6,9 +6,9 @@ const popupImageTitle = popupOpenImage.querySelector('.popup__image-title');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupFormAdd = popupAdd.querySelector('.popup__form-add');
 const editButton = document.querySelector('.profile__edit-button');
-const closeButtonProfile = popupProfile.querySelector('.popup__close-button');
-const closeButtonAdd = popupAdd.querySelector('.popup__close-button');
-const closeButtonImage = popupOpenImage.querySelector('.popup__close-button');
+//const closeButtonProfile = popupProfile.querySelector('.popup__close-button');
+//const closeButtonAdd = popupAdd.querySelector('.popup__close-button');
+//const closeButtonImage = popupOpenImage.querySelector('.popup__close-button');
 const inputName = popupProfile.querySelector('[name=form-name]');
 const inputAbout = popupProfile.querySelector('[name=form-about]');
 const inputTitle = popupAdd.querySelector('[name=form-title]');
@@ -70,20 +70,32 @@ editButton.addEventListener('click', () => {
   openPopup(popupProfile);
 });
 
-closeButtonProfile.addEventListener('click', () => {
-  closePopup(popupProfile);
+popupProfile.addEventListener('click', (evt) => {
+  if (
+    evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')
+  ) {
+    closePopup(popupProfile);
+  }
 });
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
 });
 
-closeButtonAdd.addEventListener('click', () => {
-  closePopup(popupAdd);
+popupAdd.addEventListener('click', (evt) => {
+  if (
+    evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')
+  ) {
+    closePopup(popupAdd);
+  }
 });
 
-closeButtonImage.addEventListener('click', () => {
-  closePopup(popupOpenImage);
+popupOpenImage.addEventListener('click', (evt) => {
+  if (
+    evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')
+  ) {
+    closePopup(popupOpenImage);
+  }
 });
 
 const submitFormHandler = (evt) => {
