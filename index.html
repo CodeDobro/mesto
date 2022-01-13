@@ -34,10 +34,12 @@
   <div class="popup popup_type_profile">
     <section class="popup__content">
       <button type="button" class="popup__close-button"></button>
-      <h3 class="popup__title">Редактировать профиль</h3>
       <form name="popup-form" class="popup__form popup__form-profile">
-        <input name="form-name" type="text" class="popup__input" placeholder="Жак-Ив Кусто">
-        <input name="form-about" type="text" class="popup__input" placeholder="Исследователь океана">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input required minlength="2" maxlength="40" name="form-name" type="text" class="popup__input" id="loginInput" placeholder="Жак-Ив Кусто">
+        <span class="popup__error" id="loginInputError"></span>
+        <input required minlength="2" maxlength="200" name="form-about" type="text" class="popup__input" id="aboutInput" placeholder="Исследователь океана">
+        <span class="popup__error" id="aboutInputError"></span>
         <button type="submit" class="popup__save-button">Сохранить</button>
       </form>
     </section>
@@ -45,10 +47,12 @@
   <div class="popup popup_type_add">
     <section class="popup__content">
       <button type="button" class="popup__close-button"></button>
-      <h3 class="popup__title">Новое место</h3>
       <form name="popup-form" class="popup__form popup__form-add">
-        <input name="form-title" type="text" class="popup__input" placeholder="Название">
-        <input name="form-link" type="text" class="popup__input" placeholder="Ссылка на картинку">
+        <h3 class="popup__title">Новое место</h3>
+        <input required minlength="2" maxlength="30" name="form-title" type="text" class="popup__input" id="titleInput" placeholder="Название">
+        <span class="popup__error" id="titleInputError"></span>
+        <input required name="form-link" type="url" class="popup__input" id="linkInput" placeholder="Ссылка на картинку">
+        <span class="popup__error" id="linkInputError"></span>
         <button type="submit" class="popup__save-button">Создать</button>
       </form>
     </section>
