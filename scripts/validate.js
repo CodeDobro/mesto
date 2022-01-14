@@ -9,6 +9,7 @@ const showInputError = (formElement, inputElement, { inputErrorClass }, errorMes
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`)
   errorElement.textContent = errorMessage
   inputElement.classList.add(inputErrorClass)
+  console.log(inputErrorClass)
 }
 
 const hideInputError = (formElement, inputElement, { inputErrorClass }) => {
@@ -26,3 +27,12 @@ inputs.forEach(input => {
     }
   })
 })
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}); 
